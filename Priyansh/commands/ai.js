@@ -18,7 +18,7 @@ module.exports.run = async function ({ api, event, args, Users }) {
     const { threadID, messageID } = event;
 
     // OpenAI API Key
-    const OPENAI_API_KEY = "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";
+    const OPENAI_API_KEY = "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";
 
     // Get user query
     const query = args.join(" ");
