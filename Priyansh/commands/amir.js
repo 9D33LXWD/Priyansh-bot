@@ -22,8 +22,6 @@ module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
       __dirname + "/noprefix/amir.jpg",
       __dirname + "/noprefix/amir2.jpg",
       __dirname + "/noprefix/amir3.jpg",
-      __dirname + "/noprefix/amir4.jpg",
-      __dirname + "/noprefix/amir5.jpg",
     ];
 
     // Randomly select an image from the array
