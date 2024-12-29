@@ -28,7 +28,7 @@ module.exports.run = async function ({ api, event, args, Users }) {
 
   try {
     // Define the OpenAI API URL and API Key
-    const apiKey = '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';  // Replace with your actual OpenAI API key
+    const apiKey = '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';  // Replace with your actual OpenAI API key
     const apiUrl = 'https://api.openai.com/v1/completions';
 
     // Send a request to OpenAI
