@@ -19,7 +19,7 @@ module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
 
     // List of images (add more images to this list as per your need)
     const images = [
-      __dirname + "/noprefix/amir1.jpg",
+      __dirname + "/noprefix/amir.jpg",
       __dirname + "/noprefix/amir2.jpg",
       __dirname + "/noprefix/amir3.jpg",
       __dirname + "/noprefix/amir4.jpg",
