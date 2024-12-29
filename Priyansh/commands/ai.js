@@ -1,77 +1,48 @@
-const axios = require("axios");
-
 module.exports.config = {
-    name: "ai",
-    version: "1.0.0",
-    hasPermssion: 0,
-    credits: "Updated by ChatGPT",
-    description: "Integrate OpenAI API for AI-powered responses.",
-    commandCategory: "ai",
-    usages: "[ask]",
-    cooldowns: 2,
-    dependencies: {
-        "axios": "1.4.0"
+  name: "ai",
+  version: "2.0.8",
+  hasPermssion: 0,
+  credits: "Rayanofficial",
+  description: "Artificial intelligence",
+  commandCategory: "utilities",
+  usages: "ask anything",
+  cooldowns: 5,
+  dependencies: {
+        "openai": ""
     }
 };
+module.exports.run = async function({ api, event, args }) {
 
-module.exports.run = async function ({ api, event, args, Users }) {
-    const { threadID, messageID } = event;
-
-    // OpenAI API Key
-    const OPENAI_API_KEY = "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";
-
-    // Get user query
-    const query = args.join(" ");
-
-    // Check if user provided input
-    if (!query) {
-        return api.sendMessage("Please type a message to ask the AI!", threadID, messageID);
-    }
-
-    // Send waiting message
-    api.sendMessage("Processing your request, please wait...", threadID, messageID);
-
-    try {
-        // Set message reaction to show processing
-        api.setMessageReaction("⌛", event.messageID, () => {}, true);
-
-        // Call OpenAI API
-        const response = await axios.post(
-            "https://api.openai.com/v1/chat/completions",
-            {
-                model: "gpt-3.5-turbo", // Using GPT-3.5 model
-                messages: [{ role: "user", content: query }],
-                max_tokens: 150, // Maximum response length
-                temperature: 0.7 // Response creativity
-            },
-            {
-                headers: {
-                    "Authorization": `Bearer ${OPENAI_API_KEY}`,
-                    "Content-Type": "application/json"
-                }
-            }
-        );
-
-        // Extract AI response
-        const aiResponse = response.data.choices[0].message.content.trim();
-
-        // Send AI response back to the user
-        api.sendMessage(aiResponse, threadID, messageID);
-
-        // Set message reaction to success
-        api.setMessageReaction("✅", event.messageID, () => {}, true);
-
-    } catch (error) {
-        console.error("Error with OpenAI API:", error.message);
-
-        // Send error message to user
-        api.sendMessage(
-            "An error occurred while processing your request. Please try again later.",
-            threadID,
-            messageID
-        );
-
-        // Set message reaction to error
-        api.setMessageReaction("❌", event.messageID, () => {}, true);
-    }
-};
+  
+const { Configuration, OpenAIApi } = require("openai");
+  const configuration = new Configuration({
+                                apiKey: "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",
+                            });
+                            const openai = new OpenAIApi(configuration);
+  let data = args.join(" ");
+                            if (data.length < 2) {
+                                api.sendMessage(" Ask Anything \n★᭄𝗖𝗿𝗲𝗱𝗶𝘁𝘀  AMIR ", event.threadID);
+                            } else {
+                                try {
+                                    const completion = await openai.createCompletion({
+                                        model: "text-davinci-003",
+                                        prompt: args.join(" "),
+                                        temperature: 0.5,
+                                        max_tokens: 2000,
+                                        top_p: 0.3,
+                                        frequency_penalty: 0.5,
+                                        presence_penalty: 0.0,
+                                    });
+                                    api.sendMessage(completion.data.choices[0].text, event.threadID, event.messageID);
+                                }
+                                catch (error) {
+                                    if (error.response) {
+                                        console.log(error.response.status);
+                                        console.log(error.response.data);
+                                    } else {
+                                        console.log(error.message);
+                                        api.sendMessage(error.message, event.threadID);
+                                    }
+                                }
+                            }
+}
