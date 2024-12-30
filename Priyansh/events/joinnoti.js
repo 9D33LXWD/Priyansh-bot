@@ -1,5 +1,5 @@
 module.exports.config = {
-	name: "joinNoti",
+	name: "join",
 	eventType: ["log:subscribe"],
 	version: "1.0.1",
 	credits: "Leiam Nash",
