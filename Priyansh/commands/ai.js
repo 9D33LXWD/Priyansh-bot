@@ -1,47 +1,82 @@
-const axios = require("axios");
+const axios = require("axios"); 
+const moment = require("moment-timezone"); 
+
 module.exports.config = {
-  'name': 'ai',
-  'version': '1.0.0',
-  'hasPermission': 0x0,
-  'credits': "api by jerome",
-  'description': "Gpt architecture",
-  'usePrefix': false,
-  'commandCategory': 'GPT4',
-  'cooldowns': 0x5
+  name: "ai",
+  version: "1.0.5",
+  hasPermssion: 0,
+  credits: "𝑱𝑼𝑳𝑴𝑰 𝑱𝑨𝑨𝑻",
+  description: "Can assist you in completing your homework, speech, and even essays.",
+  commandCategory: "chatbots",
+  usages: "ask anything",
+  cooldowns: 7,
+  dependencies: {}
 };
-module.exports.run = async function ({
-  api: _0x1a65dd,
-  event: _0x129feb,
-  args: _0x3447aa
-}) {
+
+async function getUserName(api, senderID) {
   try {
-    const {
-      messageID: _0x3982a1,
-      messageReply: _0x452cb0
-    } = _0x129feb;
-    let _0xa7eccd = _0x3447aa.join(" ");
-    if (_0x452cb0 && !_0xa7eccd) {
-      const _0x50a417 = _0x452cb0.body;
-      _0xa7eccd = _0x50a417;
-    } else {
-      if (!_0xa7eccd) {
-        return _0x1a65dd.sendMessage("Please provide a prompt to generate a text response.\nExample: ai What is the meaning of life?", _0x129feb.threadID, _0x3982a1);
+    const userInfo = await api.getUserInfo(senderID);
+    return userInfo[senderID].name;
+  } catch (error) {
+    console.log(error);
+    return "User";
+  }
+}
+
+module.exports.run = async function({ api, event, args, Users, Threads }) {
+  api.setMessageReaction("", event.messageID, (err) => {}, true);
+  api.sendTypingIndicator(event.threadID, true);
+
+  const apiKey = "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";
+  const url = "https://api.openai.com/v1/chat/completions";
+  const senderID = event.senderID;
+
+  // Get the user's name
+  const userName = await getUserName(api, senderID);
+  const currentTime = moment().tz("Asia/Kolkata").format("MMM D, YYYY - hh:mm A"); 
+
+  const promptMessage = `System: Act as a Messenger Chatbot. As a Chatbot you will be responsible`; 
+  const blank = args.join(" ");
+  const data = `User: ${args.join(" ")}\nYou: `;
+
+  if (blank.length < 2) {
+    api.sendMessage("Hello! how may assist you today?", event.threadID, event.messageID);
+    api.setMessageReaction("", event.messageID, (err) => {}, true);
+  } else {
+      api.sendMessage("Searching for your question: "+args.join(" "), event.threadID, event.messageID)
+    try {
+      const response = await axios.post(
+        url,
+        {
+          model: "gpt-3.5-turbo",
+          messages: [
+            { role: "system", content: promptMessage },
+            { role: "user", content: data },
+          ],
+          temperature: 0.7,
+          top_p: 0.9,
+          frequency_penalty: 0,
+          presence_penalty: 0,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${apiKey}`,
+          },
+        }
+      );
+
+      const message = response.data.choices[0].message.content;
+      api.setMessageReaction("", event.messageID, (err) => {}, true);
+      api.sendMessage(message, event.threadID, event.messageID);
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.status);
+        console.log(error.response.data);
+      } else {
+        console.log(error.message);
+        api.sendMessage(error.message, event.threadID);
       }
     }
-    _0x1a65dd.sendMessage("🤖 Processing your request...", _0x129feb.threadID);
-    await new Promise(_0x2adb56 => setTimeout(_0x2adb56, 0x7d0));
-    const _0x1b4bc6 = "http://fi1.bot-hosting.net:6518/gpt?query=" + encodeURIComponent(_0xa7eccd) + "&model=gpt-4-32k-0314";
-    const _0x49d4e9 = await axios.get(_0x1b4bc6);
-    if (_0x49d4e9.data && _0x49d4e9.data.response) {
-      const _0x2e9f35 = _0x49d4e9.data.response;
-      const _0x271e54 = "\n                🤖 AI Response:\n                ━━━━━━━━━━━━━━━━━━━\n                \n                📌 Your Prompt:\n                \"" + _0xa7eccd + "\"\n                \n                📝 Generated Text:\n                \"" + _0x2e9f35 + "\"\n                \n                ━━━━━━━━━━━━━━━━━━━\n            ";
-      _0x1a65dd.sendMessage(_0x271e54, _0x129feb.threadID, _0x3982a1);
-    } else {
-      console.error("API response did not contain expected data:", _0x49d4e9.data);
-      _0x1a65dd.sendMessage("❌ An error occurred while generating the text response. Please try again later. Response data: " + JSON.stringify(_0x49d4e9.data), _0x129feb.threadID, _0x3982a1);
-    }
-  } catch (_0x52baf4) {
-    console.error("Error:", _0x52baf4);
-    _0x1a65dd.sendMessage("❌ An error occurred while generating the text response. Please try again later. Error details: " + _0x52baf4.message, _0x129feb.threadID, _0x129feb.messageID);
   }
 };
