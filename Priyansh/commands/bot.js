@@ -7,7 +7,7 @@ module.exports.config = {
   description: "goibot",
   commandCategory: "Noprefix",
   usages: "noprefix",
-  cooldowns: 5,
+  cooldowns: 15,
 };
 module.exports.handleEvent = async function({ api, event, args, Threads, Users }) {
   var { threadID, messageID, reason } = event;
