@@ -24,7 +24,7 @@ module.exports.handleEvent = async function({ api, event, args, Threads, Users }
      return api.sendMessage("️miss u more🥰", threadID, messageID);
    };
   if ((event.body.toLowerCase() == "owner") || (event.body.toLowerCase() == "Owner kon ha")) {
-     return api.sendMessage("️ RAYAN ANSARI 🤧", threadID, messageID);
+     return api.sendMessage("️ ADEEL BALOCH  🤧", threadID, messageID);
    };
 
   if ((event.body.toLowerCase() == "bat suno") || (event.body.toLowerCase() == "bat suno ji")) {
@@ -70,7 +70,7 @@ if ((event.body.toLowerCase() == " bot love you") || (event.body.toLowerCase() =
      return api.sendMessage("️kuxh nhi bs coding or study", threadID, messageID);
    };
 
-   if ((event.body.toLowerCase() == "Rayan Ansari") || (event.body.toLowerCase() == "Rayan")) {
+   if ((event.body.toLowerCase() == "Adeel Baloch ") || (event.body.toLowerCase() == "Adeel")) {
      return api.sendMessage("️BOSS BUSY HAIN", threadID, messageID);
    };
 
@@ -174,8 +174,8 @@ if ((event.body.toLowerCase() == " bot love you") || (event.body.toLowerCase() =
      return api.sendMessage("️Daffa MaR UsY Bagh Gyi To  Tu Q Ro Rha 😁", threadID, messageID);
    };
 
-    if ((event.body.toLowerCase() == "Kabeer") || (event.body.toLowerCase() == "Kabeer Ranjha ")) {
-     return api.sendMessage("LTG OWNER KABEER KING 👑", threadID);
+    if ((event.body.toLowerCase() == "adeel") || (event.body.toLowerCase() == "Adeel Baloch ")) {
+     return api.sendMessage("LTG OWNER ADEEL BALOCH 👑", threadID);
    };
 
   if ((event.body.toLowerCase() == "😁") || (event.body.toLowerCase() == "😁")) {
@@ -278,7 +278,7 @@ if ((event.body.toLowerCase() == "🤬") || (event.body.toLowerCase() == "🤬")
    };
 
    if ((event.body.toLowerCase() == "Hello") || (event.body.toLowerCase() == "hi")) {
-     return api.sendMessage("Next Hi/Hello nhi Assalamualaikum Bola kro Okay 💖 𝙊𝙬𝙣𝙚𝙧 𝘼𝙢𝙞𝙧", threadID);
+     return api.sendMessage("Next Hi/Hello nhi Assalamualaikum Bola kro Okay 💖 Adeel Baloch", threadID);
    };
 
    if ((event.body.toLowerCase() == "😘") || (event.body.toLowerCase() == "🥰")) {
@@ -305,7 +305,7 @@ if ((event.body.toLowerCase() == "🤬") || (event.body.toLowerCase() == "🤬")
      return api.sendMessage("️Tu ganda tera pura pura khandan Ganda 😒😐:))))", threadID);
    };
 
-   if ((event.body.toLowerCase() == "Nothin") || (event.body.toLowerCase() == "Suno Rayan")) {
+   if ((event.body.toLowerCase() == "Nothin") || (event.body.toLowerCase() == "Suno Adeel")) {
      return api.sendMessage("️Swear something dog :) you've been holding on to you for a long time", threadID);
    };
 
@@ -317,7 +317,7 @@ if ((event.body.toLowerCase() == "🤬") || (event.body.toLowerCase() == "🤬")
      return api.sendMessage("️Swear something dog :) you've been holding on to you for a long time", threadID);
    };
 
-   if ((event.body.toLowerCase() == "rayan") || (event.body.toLowerCase() == "Rayan")) {
+   if ((event.body.toLowerCase() == "rayan") || (event.body.toLowerCase() == "Adeel")) {
      return api.sendMessage("️ Usy q bula rahe Ho Ma bhi sath ao kya🙆😐 :>", threadID);
    };
 
@@ -342,7 +342,7 @@ if ((event.body.toLowerCase() == "🤬") || (event.body.toLowerCase() == "🤬")
    };
 
 if ((event.body.toLowerCase() == "Boss") || (event.body.toLowerCase() == "boss")) {
-     return api.sendMessage("𝙊𝙬𝙣𝙚𝙧 𝘼𝙢𝙞𝙧", threadID, messageID);
+     return api.sendMessage("𝙊𝙬𝙣𝙚𝙧 Adeel", threadID, messageID);
    };
 
 if ((event.body.toLowerCase() == "Hi") || (event.body.toLowerCase() == "hi")) {
@@ -358,7 +358,7 @@ if ((event.body.toLowerCase() == "Hi") || (event.body.toLowerCase() == "hi")) {
    };
 
   if ((event.body.toLowerCase() == "naila") || (event.body.toLowerCase() == "Tabi")) {
-     return api.sendMessage("Rayan ki hai Yawr🥺", threadID);
+     return api.sendMessage("Adeel ki hai Yawr🥺", threadID);
    };
 
   if ((event.body.toLowerCase() == "Kabeer") || (event.body.toLowerCase() == "kabeer")) {
@@ -488,7 +488,7 @@ if ((event.body.toLowerCase() == "sim miss you yr") || (event.body.toLowerCase()
 
   if (event.body.indexOf("bot") == 0 || (event.body.indexOf("Bot") == 0)) {
     var msg = {
-      body: `╔═════▓࿇࿇▓═════╗\n        ${name}\n╚═════▓࿇࿇▓═════╝\n\n●▬ൠൠ▬𝙊𝙬𝙣𝙚𝙧▬ൠൠ▬●\n\n◈━━━━━𝘼𝙢𝙞𝙧━━━━━◈\n${rand}\n◈━━━━━𝘼𝙢𝙞𝙧━━━━━◈`
+      body: `╔═════▓࿇࿇▓═════╗\n        ${name}\n╚═════▓࿇࿇▓═════╝\n\n●▬ൠൠ▬𝙊𝙬𝙣𝙚𝙧▬ൠൠ▬●\n\n◈━━━━━Adeel━━━━━◈\n${rand}\n◈━━━━━Adeel━━━━━◈`
     }
     return api.sendMessage(msg, threadID, messageID);
   };
