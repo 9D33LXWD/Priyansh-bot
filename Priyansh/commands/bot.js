@@ -48,7 +48,7 @@ if ((event.body.toLowerCase() == " bot love you") || (event.body.toLowerCase() =
    };
 
    if ((event.body.toLowerCase() == "welcome ") || (event.body.toLowerCase() == "welcome")) {
-     return api.sendMessage("️thankx Bhae❤️", threadID, messageID);
+     return api.sendMessage("️thankx baby❤️", threadID, messageID);
    };
 
    if ((event.body.toLowerCase() == "no need") || (event.body.toLowerCase() == "no need happy rho")) {
@@ -488,7 +488,7 @@ if ((event.body.toLowerCase() == "sim miss you yr") || (event.body.toLowerCase()
 
   if (event.body.indexOf("bot") == 0 || (event.body.indexOf("Bot") == 0)) {
     var msg = {
-      body: `╔═════▓࿇࿇▓═════╗\n        ${name}\n╚═════▓࿇࿇▓═════╝\n\n●▬ൠൠ▬𝙊𝙬𝙣𝙚𝙧▬ൠൠ▬●\n\n◈━━━━━Adeel━━━━━◈\n${rand}\n◈━━━━━Adeel━━━━━◈`
+      body: `╔═════▓࿇࿇▓═════╗\n        ${name}\n╚═════▓࿇࿇▓═════╝\n\n●▬ൠൠ▬𝙊𝙬𝙣𝙚𝙧▬ൠൠ▬●\n\n◈━━━━━𝐀𝐃𝐄𝐄𝐋━━━━━◈\n${rand}\n◈━━━━━𝐀𝐃𝐄𝐄𝐋━━━━━◈`
     }
     return api.sendMessage(msg, threadID, messageID);
   };
